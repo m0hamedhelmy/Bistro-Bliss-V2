@@ -8,6 +8,15 @@ from django.core.mail import send_mail
 from django.core.mail import EmailMultiAlternatives
 from django.template.loader import get_template
 from django.template import Context
+from django.shortcuts import render
+from .models import MenuItem  # Import your model
+
+def home(request):
+    return render(request, 'index.html')  # Replace with your homepage template
+
+def menu(request):
+    items = MenuItem.objects.all()  # Fetch all menu items
+    return render(request, 'menu.html', {'items': items})  # Pass items to the template
 
 
 #################### index####################################### 
